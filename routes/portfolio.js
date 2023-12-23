@@ -6,8 +6,9 @@ router.get('/main', async function(req, res) {
     const query = `
         select post.*, users.name as user_name 
         from post inner join users on post.userId = users.id
+        where users.id = ?
     `
-    const [posts] = await db.query(query);
+    const [posts] = await db.query(query, [req.session.user.userId]);
 
     const postsData = posts.map(post => {
         return {
@@ -91,7 +92,33 @@ router.post('/update/:postid', async function(req, res) {
     ]);
 
     res.redirect('/main');
-})
+});
+
+router.get('/write', function(req, res) {
+    res.render('write');
+});
+
+router.post('/upload', async function(req, res) {
+    const postData = req.body;
+
+    const query = `
+    insert into post (title, subTitle, access, body, userId, likes, count)
+    values (?,?,?,?,?,?,?)`;
+
+    console.log(postData);
+
+    await db.query(query, [
+        postData.title,
+        postData.subtitle,
+        postData.access,
+        postData.body,
+        req.session.user.userId,
+        0,
+        0 
+    ]);
+
+    res.redirect('/main');
+});
 
 module.exports = router;
 // 번호 제목 글쓴이 작성일 조회
