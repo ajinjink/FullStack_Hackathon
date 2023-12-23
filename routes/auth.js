@@ -60,13 +60,11 @@ router.post('/login', async function(req, res) {
         return res.redirect('/');
     }
 
-    // req.session.user = {id: existingUser.id, email: existingUser.email}; // 세션으로 사용자 정보 저장
-    // req.session.isAuthenticated = true; // 로그인 성공 플래그
-    // req.session.save(function() { // 세션 저장
-    //     res.redirect('/admin');
-    // });
-    console.log('password equal');
-    res.redirect('/main');
+    req.session.user = {userId: existingUser.id}; // 세션으로 사용자 정보 저장
+    req.session.isAuthenticated = true; // 로그인 성공 플래그
+    req.session.save(function() { // 세션 저장
+        return res.redirect('/main');
+    });
 
     console.log('user is authenticated');
 });
