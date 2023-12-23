@@ -63,7 +63,8 @@ router.post('/login', async function(req, res) {
     req.session.user = {userId: existingUser.id}; // 세션으로 사용자 정보 저장
     req.session.isAuthenticated = true; // 로그인 성공 플래그
     req.session.save(function() { // 세션 저장
-        return res.redirect('/main');
+        // return res.redirect('/main');
+        return res.redirect('/404');
     });
 
     console.log('user is authenticated');

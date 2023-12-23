@@ -223,6 +223,11 @@ a {
     font-size: 1.4rem;
 }
 
+
+
+
+
+
 .board_write {
     border-top: 2px solid #000;
 }
@@ -264,6 +269,7 @@ a {
 
 .board_write .title dd {
     width: calc(100% - 100px);
+    margin: 1%;
 }
 
 .board_write .title input[type="text"],
@@ -277,8 +283,12 @@ a {
     width: 80%;
 }
 
+
 .board_write .cont {
-    border-bottom: 1px solid #000;
+    border: 1px solid #000;
+    border-radius: 5px;
+    width: 80%;
+    margin-left: 15px;
 }
 
 .board_write .cont textarea {
@@ -289,4 +299,21 @@ a {
     box-sizing: border-box;
     border: 0;
     resize: vertical;
+}
+
+
+.input-field {
+    width: 80%;
+    /* margin-left: 90px; */
+    padding: 10px;
+    margin-bottom: 5%;
+}
+
+
+.input-box {
+    padding: 15px;
+}
+
+.access {
+    margin-left: 15px;
 }
