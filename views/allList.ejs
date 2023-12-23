@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('includes/head', { title: 'forif' }) %>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</head>
+<body>
+    <ol>
+        <% for(const post in posts) { %>
+            <% if(post.access) { %>
+                <div class="card text-center">
+                    <div class="card-header">
+                      <%= post.userId %> <%= post.stackTag %>
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title"><%= post.title %></h5>
+                      <p class="card-text"><%= post.subTitle %></p>
+                      <a href="/allList/:<%= post.id%>" class="btn btn-primary">See Detail</a>
+                    </div>
+                    <div class="card-footer text-body-secondary">
+                         <%= post.count %> <form action="/like" method="post" ><%= post.like %> </form>
+                    </div>
+                  </div>
+            </li>
+        <% } } %>
+    </ol>
+    
+</body>
+</html>
