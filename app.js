@@ -1,6 +1,7 @@
 const path = require('path');
 
 const express = require('express');
+const bodyParser = require('body-parser');
 const session = require('express-session');
 const mysqlSession = require('express-mysql-session')(session);
 
@@ -17,6 +18,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(session({ 
     secret: 'super-secret', 
