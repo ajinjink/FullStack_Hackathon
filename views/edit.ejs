@@ -14,7 +14,7 @@
         </div>
         <div class="board_write_wrap">
             <div class="board_write">
-                <form action="/edit/<%= post.id %>" method="POST">
+                <form action="/update/<%= post.id %>" method="POST">
                     <div class="title">
                         <dl>
                             <dt>제목</dt>
@@ -38,8 +38,8 @@
                     </div>
                     <div>
                         <select name="access" id="dropbox">
-                            <option value="public" selected>공개</option>
-                            <option value="private">비공개</option>
+                            <option value="1" <%= post.access ? 'selected' : '' %>>공개</option>
+                            <option value="0" <%= !post.access ? 'selected' : '' %>>비공개</option>
                         </select>
                     </div>
                     
