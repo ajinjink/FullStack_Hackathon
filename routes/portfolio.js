@@ -47,10 +47,10 @@ router.get('/view/:postid', async function(req,res){
         })
     }
 
-    res.render('view', {post: postData});
+    res.render('index', {post: postData});
 });
 
-router.post('/edit/:postid', async function(req, res) { // 수정 페이지로 넘어감
+router.get('/edit/:postid', async function(req, res) { // 수정 페이지로 넘어감
     const query = `
         select post.*, users.name as user_name 
         from post inner join users on post.userId = users.id
